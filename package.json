@@ -1,0 +1,26 @@
+{
+  "name": "StorageProject",
+  "version": "1.0.0",
+  "description": "Storage services Web App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TatagW/StorageProject.git"
+  },
+  "keywords": [],
+  "author": "rikzyich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TatagW/StorageProject/issues"
+  },
+  "homepage": "https://github.com/TatagW/StorageProject#readme",
+  "dependencies": {
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "sequelize": "^5.16.0"
+  }
+}
