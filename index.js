@@ -6,7 +6,9 @@ const { User, StorageItem, Storage, Item } = require("./models")
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-
+app.get("/", (req, res) => {
+    res.send("welcome")
+})
 app.use("/item", require("./routes/itemRoute"))
 app.use("/storage", require("./routes/storageRoute"))
 app.use("/storageitem", require("./routes/storageItemRoute"))

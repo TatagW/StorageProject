@@ -1,7 +1,6 @@
 const router = require("express").Router()
+const StorageItemController = require("../controllers/storageItemController")
 
-router.get("/", (req, res) => {
-    res.send("storageitem")
-})
+router.get("/add", StorageItemController.create)
 
 module.exports = router

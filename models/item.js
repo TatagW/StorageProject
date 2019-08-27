@@ -14,4 +14,4 @@ module.exports = (sequelize, DataTypes) => {
     Item.hasMany(models.StorageItem)
   };
   return Item;
-};
+}; 
