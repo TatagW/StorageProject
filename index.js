@@ -1,2 +1,2 @@
 const B = 3
-console.log(B)
+console.log(B)lksjdfsdfgsdfg
