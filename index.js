@@ -8,7 +8,7 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-app
 app.set('view engine', 'ejs')
 
 app.get("/", (req, res) => {
-    res.render("homepage")
+    res.render("homepage", { error: undefined })
 })
 app.post("/", UserController.login)
 

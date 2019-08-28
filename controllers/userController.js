@@ -24,11 +24,16 @@ class UserController {
             ]
         })
         .then(user => {
-            // res.send(user)
-            res.render("item/main", { user })
+            if(user){
+                res.render("item/main", { user })
+            }else{
+                res.render("homepage", {
+                    error: "User doesn't exist"
+                })
+            }
         })
-        .then(err => {
-            res.send(err)
+        .catch(err => {
+            res.send(err.message)
         })
     }
     static createForm(req, res){
