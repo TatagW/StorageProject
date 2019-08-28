@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,22 +9,34 @@
     <title>Storage Company</title>
 </head>
 
+
+
 <body style="font-family: 'Open Sans', sans-serif;">
     <%- include("./partials/navbar") %>
-    <h3>login</h3>
-    <form method="POST">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name">
+
+    <div class="container d-flex w-100 h-100 p-5 mx-auto flex-column">
+
+        <main class="row mx-auto">
+            <form method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            
+        </main>
+        <div class="mx-auto">
+
+            <a href="/user/add">Create an account!</a>
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="password">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-      <a href="/user/add">Create an account!</a>
-    
+    </div>
+
+
 
 </body>
-</html>
+
