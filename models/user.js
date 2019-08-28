@@ -1,4 +1,5 @@
 'use strict';
+const hashPassword = require("../helpers/hashPassword")
 module.exports = (sequelize, DataTypes) => {
   class User extends sequelize.Sequelize.Model {
 
@@ -22,13 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         .then(found => {
           if(found) throw new Error("User already exist!")
           
-          const crypto = require('crypto');
-
-          const secret = 'abcdefg';
-          const hash = crypto.createHmac('sha256', secret)
-                            .update(user.password)
-                            .digest('hex');
-          user.password = hash
+          user.password = hashPassword(user.password)
         })
       }
     }

@@ -2,7 +2,10 @@ const { Item } = require("../models")
 
 class ItemController{
     static createForm(req, res){
-        res.render("item/register")
+        let user = {
+            id: 1
+        }
+        res.render("item/register", { user })
     }
     static create(req, res){
         const { UserId, name } = req.body
