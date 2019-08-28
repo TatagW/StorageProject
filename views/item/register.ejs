@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <%- include("./partials/bootstrap") %>
-    <title>Storage Company</title>
+    <%- include("../partials/bootstrap") %>
+    <title>User</title>
 </head>
 
-    <%- include("./partials/navbar") %>
 <body style="font-family: 'Open Sans', sans-serif;">
-    
+
+    <%- include("../partials/navbar") %>
+
     <form method="POST">
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name">
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="password">
-        </div>
+        <input type="hidden" name="UserId" value="<%= user.id%>">
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-      <a href="/user/add">Create an account!</a>
-    
+  
 
-    </body>
+    
+</body>
+
 </html>

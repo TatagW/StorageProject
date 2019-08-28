@@ -4,28 +4,28 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     let data = [
       {
-        name: "andik",
+        name: "Storage Surabaya",
         address: "jl pucang anom",
         capacity: 500,
         createdAt: new Date,
         updatedAt: new Date
       },
       {
-        name: "emil",
+        name: "Storage Bali",
         address: "jl bratang jaya",
         capacity: 700,
         createdAt: new Date,
         updatedAt: new Date
       },
       {
-        name: "isro",
+        name: "Storage Semarang",
         address: "jl kemanggisan",
         capacity: 200,
         createdAt: new Date,
         updatedAt: new Date
       },
       {
-        name: "hardim",
+        name: "Storage Balikpapan",
         address: "jl agung raya",
         capacity: 450,
         createdAt: new Date,

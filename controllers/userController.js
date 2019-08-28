@@ -1,17 +1,22 @@
 const { User } = require("../models")
 
 class UserController {
+    static createForm(req, res){
+        res.render('user/register', {error: undefined, user: undefined})
+    }
     static create(req, res){
-        User.create({
-            name: "test3",
-            address: "test2",
-            password: "halo"
-        })
+        const { name, address, password } = req.body
+        const user = {
+            name,
+            address,
+            password
+        }
+        User.create(user)
         .then(success => {
             res.send(success)
         })
         .catch(err => {
-            res.send(err.message)
+            res.render("user/register", { error: err.message, user})
         })
     }
 }
