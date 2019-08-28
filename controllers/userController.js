@@ -1,15 +1,31 @@
-const { User } = require("../models")
+const { User, Item, StorageItem, Storage } = require("../models")
 const hashPassword = require("../helpers/hashPassword")
 class UserController {
-    static findOne(req, res){
+    static login(req, res){
         User.findOne({
             where:{
                 name: req.body.name,
                 password: hashPassword(req.body.password)
-            }
+            },
+            include: [
+                {
+                    model: Item,
+                    include: [
+                        {
+                            model: StorageItem,
+                            include: [
+                                {
+                                    model: Storage
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         })
         .then(user => {
-            res.send(user)
+            // res.send(user)
+            res.render("item/main", { user })
         })
         .then(err => {
             res.send(err)

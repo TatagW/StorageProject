@@ -9,7 +9,7 @@ app.set('view engine', 'ejs')
 app.get("/", (req, res) => {
     res.render("homepage")
 })
-app.post("/", UserController.findOne)
+app.post("/", UserController.login)
 app.use("/item", require("./routes/itemRoute"))
 app.use("/storage", require("./routes/storageRoute"))
 app.use("/storageitem", require("./routes/storageItemRoute"))
