@@ -2,16 +2,19 @@ const { Item } = require("../models")
 
 class ItemController{
     static createForm(req, res){
-        res.render("item/register")
+        let user = {
+            id: 1
+        }
+        res.render("item/register", { user })
     }
     static create(req, res){
-        const { UserId, name } = req.body
+        const { name } = req.body
         Item.create({
             name,
-            UserId
+            UserId: req.params.id
         })
         .then(success => {
-            res.send(success)
+            res.redirect(`/item/${req.params.id}`)
         })
         .then(err => {
             res.send(err)
