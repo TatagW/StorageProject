@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 const UserController = require("./controllers/userController")
+
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-appwww-form-urlencoded
 app.set('view engine', 'ejs')
@@ -10,6 +11,7 @@ app.get("/", (req, res) => {
     res.render("homepage")
 })
 app.post("/", UserController.login)
+
 app.use("/item", require("./routes/itemRoute"))
 app.use("/storage", require("./routes/storageRoute"))
 app.use("/storageitem", require("./routes/storageItemRoute"))
