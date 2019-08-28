@@ -1,7 +1,6 @@
 const router = require("express").Router()
+const StorageController = require('../controllers/storageController');
 
-router.get("/", (req, res) => {
-    res.send("storage list")
-})
+router.get("/", StorageController.findAll)
 
 module.exports = router
