@@ -9,6 +9,36 @@
 </head>
 <body style="font-family: 'Open Sans', sans-serif;">
     
+    <%- include('../partials/navbar') %>
+
+    <div class="container">
+    <div class="row pt-5">
+      <div class="col">
+        <div class="card-body">
+          <h2 class="card-title d-flex justify-content-center">Users Data</h2>
+          <table class="table table-dark table-hover table-striped">
+            <thead class="thead-light">
+              <tr>
+                <th>Name</th>
+                <th>Address</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <% storages.forEach(storage => {%>
+              <% const {name, address} = storage.dataValues %>
+              <tr>
+                <td><%= name %></td>
+                <td><%= address %> </td>
+              <% }) %>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+    
     
 </body>
 </html>
