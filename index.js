@@ -4,6 +4,7 @@ const port = 3000
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-appwww-form-urlencoded
+app.use(express.static(__dirname + '/public'))
 app.set('view engine', 'ejs')
 
 app.get("/", (req, res) => {
