@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,45 @@
     <%- include("../partials/bootstrap") %>
     <title>User's Item</title>
 </head>
+
 <body>
     <%- include("../partials/navbar") %>
-    <%if(user.dataValues.Items.length === 0){%>
-        you have no item
-    <%}else{
-        user.dataValues.Items.forEach(item => {%>
 
-            
-        <%})
-    }%>
+    <div class="container">
+        <div class="row pt-5">
+            <div class="col">
+                <div class="card-body">
+                    <h2 class="card-title d-flex justify-content-center">Users Data</h2>
+                    <table class="table table-dark table-hover table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        <%if(user.dataValues.Items.length === 0){%>
+                            <tr>
+                                <td colspan="2"></td>
+                            </tr> you have no item
+                        <%}else{ %>
+                            <% user.dataValues.Items.forEach(item => {%>
+                                <tr>
+                                    <td><%= item.name %></td>
+                                </tr>
+                            <%})%>
+                        <%}%>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <a href="/item/add/<%=user.id%>">Add more Item</a>
 </body>
+
 </html>
