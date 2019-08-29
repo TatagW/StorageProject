@@ -3,6 +3,6 @@ const StorageController = require('../controllers/storageController');
 const ItemController = require("../controllers/itemController")
 const isLogin = require('../middlewares/isLogin')
 
-router.get("/", isLogin, StorageController.findAll)
+router.get("/", StorageController.findAll)
 
 module.exports = router
