@@ -41,13 +41,52 @@ class ItemController {
         })
     }
 
-
+    static findAllBali(req, res){
+        Item.bali( req.session.userId )
+        .then(items => {
+            // res.send(items)
+            res.render("item/main", { items })
+        })
+        .catch(err => {
+            res.send(err.message)
+        })
+    }
+    static findAllBalikpapan(req, res){
+        Item.balikpapan( req.session.userId )
+        .then(items => {
+            // res.send(items)
+            res.render("item/main", { items })
+        })
+        .catch(err => {
+            res.send(err.message)
+        })
+    }
+    static findAllSemarang(req, res){
+        Item.semarang( req.session.userId )
+        .then(items => {
+            // res.send(items)
+            res.render("item/main", { items })
+        })
+        .catch(err => {
+            res.send(err.message)
+        })
+    }
+    static findAllSurabaya(req, res){
+        Item.surabaya( req.session.userId )
+        .then(items => {
+            // res.send(items)
+            res.render("item/main", { items })
+        })
+        .catch(err => {
+            res.send(err.message)
+        })
+    }
     static findAll(req, res) {
         Item.findAll({ 
             where: { 
                 UserId: req.session.userId 
             },
-            order: [["createdAt", "ASC"]],
+            order: [["name", "ASC"]],
             include: [{
                 model: StorageItem,
                 include: [

@@ -14,10 +14,10 @@ class UserController {
                 }
             })
             .then(user => {
-                if(user.password !== hashPassword(req.body.password)){
-                    res.render("homepage", {error: "wrong password"})
-                }
-                else if(user){
+                if(user){
+                    if(user.password !== hashPassword(req.body.password)){
+                        res.render("homepage", {error: "wrong password"})
+                    }
                     req.session.userId = user.id
                     res.redirect("/item")
                 }else{
