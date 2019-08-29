@@ -15,7 +15,11 @@
     <%- include("./partials/navbar") %>
 
     <div class="container d-flex w-100 h-100 p-5 mx-auto flex-column">
-
+        <%if(error){%>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <%}%>
         <main class="row mx-auto">
             <form method="POST">
                 <div class="form-group">

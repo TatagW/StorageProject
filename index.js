@@ -1,19 +1,31 @@
 const express = require('express')
+const session = require('express-session')
 const app = express()
 const port = 3000
 const UserController = require("./controllers/userController")
+const isLogin = require('./middlewares/isLogin')
+
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-appwww-form-urlencoded
+app.use(session({
+    secret: 'hacktivate',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}))
+
 app.use(express.static(__dirname + '/public'))
+
 app.set('view engine', 'ejs')
 
 app.get("/", (req, res) => {
-    res.render("homepage")
+    res.render("homepage", { error: undefined })
 })
 app.post("/", UserController.login)
-app.use("/item", require("./routes/itemRoute"))
+
+app.use("/item", isLogin, require("./routes/itemRoute"))
 app.use("/storage", require("./routes/storageRoute"))
-app.use("/storageitem", require("./routes/storageItemRoute"))
+app.use("/storageitem", isLogin, require("./routes/storageItemRoute"))
 app.use("/user", require("./routes/userRoute"))
 
 
