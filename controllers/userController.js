@@ -49,7 +49,7 @@ class UserController {
         }
         User.create(user)
         .then(success => {
-            res.send(success)
+            res.redirect("/")
         })
         .catch(err => {
             res.render("user/register", { error: err.message, user})

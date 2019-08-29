@@ -13,7 +13,8 @@ class ItemController {
             }
         })
         .then(storages => {
-            res.render("item/add", { storages })
+            // res.send(storages)
+            res.render("item/register", { storages })
         })
         .catch(err => {
             res.send(err.message)

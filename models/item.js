@@ -8,12 +8,7 @@ module.exports = (sequelize, DataTypes) => {
   Item.init({
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isNull: {
-          msg: "Please enter Item's name"
-        }
-      }
+      allowNull: { args: false, msg: "Please enter the name of the item"}
     },
     UserId: {
       type: DataTypes.INTEGER,
