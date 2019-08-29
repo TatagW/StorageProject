@@ -21,15 +21,17 @@
               <tr>
                 <th>Name</th>
                 <th>Address</th>
+                <th>Capacity</th>
               </tr>
             </thead>
             <tbody>
 
               <% storages.forEach(storage => {%>
-              <% const {name, address} = storage.dataValues %>
+              <% const {name, address, capacity} = storage.dataValues %>
               <tr>
                 <td><%= name %></td>
                 <td><%= address %> </td>
+                <td><%= storage.capacityBox() %> </td>
               </tr>
               <% }) %>
 

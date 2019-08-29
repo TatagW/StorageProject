@@ -1,6 +1,8 @@
 const router = require("express").Router()
 const StorageItemController = require("../controllers/storageItemController")
 
-router.get("/add", StorageItemController.create)
+const isLogin = require('../middlewares/isLogin')
+
+router.get("/add", isLogin, StorageItemController.create)
 router.post("/delete", StorageItemController.takeItem)
 module.exports = router
