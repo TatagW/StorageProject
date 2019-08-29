@@ -19,6 +19,7 @@ class UserController {
                         res.render("homepage", {error: "wrong password"})
                     }
                     req.session.userId = user.id
+                    
                     res.redirect("/item")
                 }else{
                     res.render("homepage", {
