@@ -47,8 +47,7 @@ class ItemController {
             where: { 
                 UserId: req.session.userId 
             },
-            order: [["createdAt", "ASC"]]
-        }, {
+            order: [["createdAt", "ASC"]],
             include: [{
                 model: StorageItem,
                 include: [
