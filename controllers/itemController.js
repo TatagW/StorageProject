@@ -13,7 +13,6 @@ class ItemController {
             }
         })
         .then(storages => {
-            // res.send(storages)
             res.render("item/register", { storages })
         })
         .catch(err => {
@@ -41,6 +40,7 @@ class ItemController {
             res.render("item/register", { error: err.message })
         })
     }
+
 
     static findAll(req, res) {
         Item.findAll({ 
