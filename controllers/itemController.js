@@ -29,12 +29,12 @@ class ItemController {
         .then(itemData => {
             item = itemData
             return StorageItem.create({
-                UserId: req.session.userId,
+                ItemId: item.id,
                 StorageId: req.body.StorageId
             })    
         })
         .then(storageItem => {
-            res.redirect("/item/main")
+            res.redirect("/item")
         })
         .catch(err => {
             res.render("item/register", { error: err.message })
@@ -47,8 +47,7 @@ class ItemController {
             where: { 
                 UserId: req.session.userId 
             },
-            order: [["createdAt", "ASC"]]
-        }, {
+            order: [["createdAt", "ASC"]],
             include: [{
                 model: StorageItem,
                 include: [
