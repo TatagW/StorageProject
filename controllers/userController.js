@@ -24,6 +24,7 @@ class UserController {
     }
  
     static create(req, res){
+        
         const { name, address, password } = req.body
         const user = {
             name,
@@ -32,10 +33,10 @@ class UserController {
         }
         User.create(user)
         .then(success => {
-            res.redirect('/')
+            res.redirect("/")
         })
         .catch(err => {
-            res.render("user/register", { error: err.message, user})
+            res.render("homepage", { error: err.message, user})
         })
     }
 }

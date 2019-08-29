@@ -8,28 +8,28 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
-        isNull: {
-          msg: "Please enter your name!"
+        notEmpty: {
+          args: true, 
+          msg: "Please enter your name"
         }
       }
     },
     address: {
       type: DataTypes.STRING,
-      allowNull: false,
       validate: {
-        isNull: {
-          msg: "Please enter your address!"
+        notEmpty: {
+          args: true, 
+          msg: "Please enter your name"
         }
       }
     },
     password: {
       type: DataTypes.INTEGER,
-      allowNull: false,
       validate: {
-        isNull: {
-          msg: "Password must be entered!"
+        notEmpty: {
+          args: true, 
+          msg: "Please enter your name"
         }
       }
     }
@@ -37,16 +37,19 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     hooks: {
       beforeCreate: (user) => {
-        return User.findOne({
-          where: {
-            name: user.name
-          }
-        })
-        .then(found => {
-          if(found) throw new Error("User already exist!")
-          
-          user.password = hashPassword(user.password)
-        })
+        if(user.name !== ''){
+          return User.findOne({
+            where: {
+              name: user.name
+            }
+          })
+          .then(found => {
+            console.log(found)
+            if(found) throw new Error("User already exist!")
+            
+            user.password = hashPassword(user.password)
+          })
+        }
       }
     }
   });
