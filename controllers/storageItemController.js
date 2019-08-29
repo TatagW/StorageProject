@@ -1,4 +1,4 @@
-const { StorageItem } = require("../models")
+const { StorageItem, Storage } = require("../models")
 class StorageItemController {
     static create(req, res){
         const { StorageId, ItemId } = req.body
@@ -11,6 +11,17 @@ class StorageItemController {
         })
         .catch(err => {
             res.send(err)
+        })
+    }
+
+    static takeItem(req, res){
+        StorageItem.destroy({
+            where: {
+                id: req.body.storageItemId
+            }
+        })
+        .then(()=> {
+            
         })
     }
 }

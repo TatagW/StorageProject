@@ -29,8 +29,10 @@ module.exports = (sequelize, DataTypes) => {
           return Storage.update({
             capacity: left
           },
-          where: {
-            id: storageItem.StorageId
+          {
+              where: {
+              id: storageItem.StorageId
+            }
           })
         })
       }
