@@ -20,7 +20,7 @@ class StorageItemController {
                 id: req.body.storageItemId
             }
         })
-        .then(storageItem=> {
+        .then(storageItem => {
             return Storage.findOne({
                 where: {
                     id: storageItem.StorageId
