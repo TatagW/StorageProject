@@ -19,7 +19,11 @@
             <input type="text" class="form-control" id="name" name="name" placeholder="Item's Name">
         </div>
         <input type="hidden" name="UserId" value="<%= user.id%>">
-
+        <select name="StorageId" id="">
+            <%storages.forEach(storage => {%>
+                <%=storage.name%> <%=storage.capacity%>
+            <%})%>
+        </select>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   

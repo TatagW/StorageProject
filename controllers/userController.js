@@ -25,8 +25,8 @@ class UserController {
         })
         .then(user => {
             if(user){
-
-                res.render("item/main")
+                req.session.userId = user.id
+                res.redirect("/item")
             }else{
                 res.render("homepage", {
                     error: "User doesn't exist"

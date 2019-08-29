@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,20 @@
     <%- include("../partials/bootstrap") %>
     <title>User's Item</title>
 </head>
+
 <body>
     <%- include("../partials/navbar") %>
-    <%if(user.dataValues.Items.length === 0){%>
+    
+    <%if(items.length === 0){%>
         you have no item
     <%}else{
-        user.dataValues.Items.forEach(item => {%>
+        items.forEach(item => {%>
             <%= item.name%>  "disini isi storage dimana"
             
             
         <%})
     }%>
-    <a href="/item/add/<%=user.id%>">Add more Item</a>
+    <a href="/item/add">Add more Item</a>
 </body>
+
 </html>
