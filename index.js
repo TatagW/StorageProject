@@ -7,6 +7,14 @@ app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-appwww-form-urlencoded
 app.set('view engine', 'ejs')
 
+var app = express()
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'havktivate',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: falce }
+}))
 app.get("/", (req, res) => {
     res.render("homepage", { error: undefined })
 })

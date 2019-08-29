@@ -25,7 +25,8 @@ class UserController {
         })
         .then(user => {
             if(user){
-                res.render("item/main", { user })
+
+                res.render("item/main")
             }else{
                 res.render("homepage", {
                     error: "User doesn't exist"
