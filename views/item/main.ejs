@@ -10,18 +10,52 @@
 </head>
 
 <body>
-    <%- include("../partials/navbar") %>
+        <%- include('../partials/navbar') %>
+
+        <div class="container">
+        <div class="row pt-5">
+          <div class="col">
+            <div class="card-body">
+              <h2 class="card-title d-flex justify-content-center">Item List</h2>
+              <table class="table table-dark table-hover table-striped">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Name</th>
+                    <th>Storage</th>
+                    <th>Actions</th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
     
-    <%if(items.length === 0){%>
-        you have no item
-    <%}else{
-        items.forEach(item => {%>
-            <%= item.name%>  "disini isi storage dimana"
-            
-            
-        <%})
-    }%>
-    <a href="/item/add">Add more Item</a>
+                  <% items.forEach(item => {%>
+                  <% const {name} = item %>
+                  <tr>
+                    <td><%= name %></td>
+                    <td><%= item.dataValues.StorageItem.dataValues.Storage.name %> </td>
+                    <td>
+                        <div class="btn btn-sm btn-info">
+                            <form action="/storageitem/delete" method="POST">
+                                <input type="hidden" name="storageItemId" value="<%=item.dataValues.StorageItem.id%>">
+                                <input type="submit" value="Take Item">
+                               
+                            </form>
+                        </div>
+                    </td>
+                  </tr>
+                  <% }) %>
+    
+                </tbody>
+              </table>
+              <div class="mx-auto">
+                  
+                  <a href="/item/add" class="btn btn-info">Add more Item</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
 </body>
 
 </html>
