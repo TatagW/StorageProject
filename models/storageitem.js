@@ -13,7 +13,29 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     }
-  }, {sequelize});
+  }, {
+    sequelize,
+    hooks: {
+      beforeCreate: (storageItem) => {
+        const { Storage } = require("../models")
+        return Storage.findOne({
+          where:{
+            id: storageItem.StorageId
+          }
+        })
+        .then(storage => {
+          if(storage.capacity < 1)throw new Error("Storage capacity is not enough")
+          let left = storage.capacity - 1
+          return Storage.update({
+            capacity: left
+          },
+          where: {
+            id: storageItem.StorageId
+          })
+        })
+      }
+    }
+  });
   StorageItem.associate = function(models) {
     // associations can be defined here
     StorageItem.belongsTo(models.Storage)
