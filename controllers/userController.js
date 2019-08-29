@@ -22,9 +22,7 @@ class UserController {
             res.send(err.message)
         })
     }
- 
     static create(req, res){
-        
         const { name, address, password } = req.body
         const user = {
             name,

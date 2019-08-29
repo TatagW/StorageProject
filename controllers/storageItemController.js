@@ -15,13 +15,40 @@ class StorageItemController {
     }
 
     static takeItem(req, res){
-        StorageItem.destroy({
+        StorageItem.findOne({
             where: {
                 id: req.body.storageItemId
             }
         })
+        .then(storageItem=> {
+            return Storage.findOne({
+                where: {
+                    id: storageItem.StorageId
+                }
+            })
+        })
+        .then(storage => {
+            return Storage.update({
+                capacity: storage.capacity + 1
+            },
+            {
+                where: {
+                    id: storageItem.StorageId
+                }
+            })
+        })
+        .then(() => {
+            StorageItem.destroy({
+                where: {
+                    id: req.body.storageItemId
+                }
+            })
+        })
         .then(()=> {
-            
+            res.redirect("/item")
+        })
+        .catch(err => {
+            res.send(err.message)
         })
     }
 }

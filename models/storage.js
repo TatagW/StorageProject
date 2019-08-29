@@ -2,6 +2,10 @@
 module.exports = (sequelize, DataTypes) => {
   class Storage extends sequelize.Sequelize.Model {
 
+    capacityBox(){
+      if(this.capacity > 1)return `${this.capacity} Boxes left`
+      else return `${this.capacity} Box left`
+    }
   }
   
   Storage.init({
