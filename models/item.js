@@ -6,8 +6,19 @@ module.exports = (sequelize, DataTypes) => {
   } 
   
   Item.init({
-    name: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isNull: {
+          msg: "Please enter Item's name"
+        }
+      }
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {sequelize});
   Item.associate = function(models) {
     // associations can be defined here

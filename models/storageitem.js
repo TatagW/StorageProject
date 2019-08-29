@@ -5,8 +5,14 @@ module.exports = (sequelize, DataTypes) => {
   }
   
   StorageItem.init({
-    StorageId: DataTypes.INTEGER,
-    ItemId: DataTypes.INTEGER
+    StorageId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    ItemId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {sequelize});
   StorageItem.associate = function(models) {
     // associations can be defined here

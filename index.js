@@ -18,6 +18,13 @@ app.use(session({
 
 app.set('view engine', 'ejs')
 
+app.set('trust proxy', 1) // trust first proxy
+app.use(session({
+  secret: 'havktivate',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}))
 app.get("/", (req, res) => {
     res.render("homepage", { error: undefined })
 })
