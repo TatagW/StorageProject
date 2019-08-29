@@ -6,22 +6,7 @@ class UserController {
             where:{
                 name: req.body.name,
                 password: hashPassword(req.body.password)
-            },
-            include: [
-                {
-                    model: Item,
-                    include: [
-                        {
-                            model: StorageItem,
-                            include: [
-                                {
-                                    model: Storage
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
+            }
         })
         .then(user => {
             if(user){
@@ -37,10 +22,9 @@ class UserController {
             res.send(err.message)
         })
     }
-    static createForm(req, res){
-        res.render('user/register', {error: undefined, user: undefined})
-    }
+ 
     static create(req, res){
+        
         const { name, address, password } = req.body
         const user = {
             name,
@@ -52,7 +36,7 @@ class UserController {
             res.redirect("/")
         })
         .catch(err => {
-            res.render("user/register", { error: err.message, user})
+            res.render("homepage", { error: err.message, user})
         })
     }
 }
