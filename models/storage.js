@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       if(this.capacity > 1)return `${this.capacity} Boxes left`
       else return `${this.capacity} Box left`
     }
+
   }
   
   Storage.init({

@@ -33,7 +33,6 @@ class StorageItemController {
                 })
             })
             .then(storage => {
-                console.log(storageId)
                 return Storage.update({
                     capacity: storage.capacity + 1
                 },
@@ -44,7 +43,6 @@ class StorageItemController {
                     })
             })
             .then(() => {
-                console.log(itemId)
                 return StorageItem.destroy({
                     where: {
                         id: req.body.storageItemId
@@ -52,7 +50,6 @@ class StorageItemController {
                 })
             })
             .then(() => {
-                console.log(itemId)
                 return Item.destroy({
                     where: {
                         id: itemId

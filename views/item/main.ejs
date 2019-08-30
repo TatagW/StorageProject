@@ -11,36 +11,41 @@
 </head>
 
 <body>
-  <%- include('../partials/navbar') %>
+        <%- include('../partials/navbar', {user}) %>
+        
+        <div class="container">
+        <div class="row pt-5">
+          <div class="col">
+            <div class="card-body">
+              <h2 class="card-title d-flex justify-content-center">Item List</h2>
+              <table class="table table-fixed table-dark table-hover table-striped">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Name</th>
+                    <th>Storage</th>
+                    <th></th>
+                   
+                  </tr>
+                </thead>
+                <tbody>
+                  <a href="/item">all</a>|
+                  <a href="/item/bali">Bali</a>|
+                  <a href="/item/Semarang">Semarang</a>|
+                  <a href="/item/Balikpapan">Balikpapan</a>|
+                  <a href="/item/Surabaya">Surabaya</a>|
 
- 
-
-  <div class="container">
-    <div class="row pt-5">
-      <div class="col">
-        <div class="card-body">
-          <h2 class="card-title d-flex justify-content-center">Item List</h2>
-          
-          <table class="table table-fixed">
-              <thead>
-                <tr>
-                  <th class="col-xs-3">Item Name</th>
-                  <th class="col-xs-3">Location Store Item</th>
-                  <th class="col-xs-6"></th>
-                </tr>
-              </thead>
-              <tbody>
                   <% items.forEach(item => {%>
-                    <% const {name} = item %>
-                    <tr>
-                      <td><%= name %></td>
-                      <td><%= item.dataValues.StorageItem.dataValues.Storage.name %> </td>
-                      <td>
-                        <div class="">
-                          <form action="/storageitem/delete" method="POST">
-                            <input type="hidden" name="storageItemId" value="<%=item.dataValues.StorageItem.id%>">
-                            <button class="btn btn-sm btn-info" type="submit">Take Item</button>          
-                          </form>
+                  <% const {name} = item %>
+                  <tr>
+                    <td><%= name %></td>
+                    <td><%= item.dataValues.StorageItem.dataValues.Storage.name %> </td>
+                    <td>
+                        <div>
+                            <form action="/storageitem/delete" method="POST">
+                                <input type="hidden" name="storageItemId" value="<%=item.dataValues.StorageItem.id%>">
+                                <input type="submit" value="Take Item">
+                               
+                            </form>
                         </div>
                       </td>
                     </tr>

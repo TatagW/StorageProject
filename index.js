@@ -1,7 +1,7 @@
 const express = require('express')
 const session = require('express-session')
 const app = express()
-const port = 3000
+const port =  process.env.PORT || 3000
 const UserController = require("./controllers/userController")
 const isLogin = require('./middlewares/isLogin')
 
@@ -14,7 +14,11 @@ app.use(session({
     cookie: { secure: false }
 }))
 
-
+app.use(function(req, res, next) {
+    res.locals.user = req.session.userId;
+    next();
+  }
+)
 
 app.set('view engine', 'ejs')
 
@@ -29,7 +33,6 @@ app.get("/", (req, res) => {
     res.render("homepage", { error: undefined })
 })
 app.post("/", UserController.login)
-
 app.use("/item", require("./routes/itemRoute"))
 app.use("/storage", require("./routes/storageRoute"))
 app.use("/storageitem", isLogin, require("./routes/storageItemRoute"))
