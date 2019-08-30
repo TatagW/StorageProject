@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <%- include("../partials/bootstrap") %>
-    <title>User's Item</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <%- include("../partials/bootstrap") %>
+  <link rel="stylesheet" href="./style.css">
+  <title>User's Item</title>
 </head>
 
 <body>
@@ -17,12 +18,12 @@
           <div class="col">
             <div class="card-body">
               <h2 class="card-title d-flex justify-content-center">Item List</h2>
-              <table class="table table-dark table-hover table-striped">
+              <table class="table table-fixed table-dark table-hover table-striped">
                 <thead class="thead-light">
                   <tr>
                     <th>Name</th>
                     <th>Storage</th>
-                    <th>Actions</th>
+                    <th></th>
                    
                   </tr>
                 </thead>
@@ -46,21 +47,21 @@
                                
                             </form>
                         </div>
-                    </td>
-                  </tr>
-                  <% }) %>
-    
-                </tbody>
-              </table>
-              <div class="mx-auto">
-                  
-                  <a href="/item/add" class="btn btn-info">Add more Item</a>
-              </div>
-            </div>
+                      </td>
+                    </tr>
+                    <% }) %>
+          
+              </tbody>
+            </table>
+          <div class="mx-auto">
+
+            <a href="/item/add" class="btn btn-info">Add more Item</a>
           </div>
         </div>
       </div>
-    
+    </div>
+  </div>
+
 </body>
 
 </html>
