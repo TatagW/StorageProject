@@ -10,7 +10,7 @@
 </head>
 
 <body>
-        <%- include('../partials/navbar') %>
+        <%- include('../partials/navbar', {user}) %>
         
         <div class="container">
         <div class="row pt-5">
@@ -39,7 +39,7 @@
                     <td><%= name %></td>
                     <td><%= item.dataValues.StorageItem.dataValues.Storage.name %> </td>
                     <td>
-                        <div class="btn btn-sm btn-info">
+                        <div>
                             <form action="/storageitem/delete" method="POST">
                                 <input type="hidden" name="storageItemId" value="<%=item.dataValues.StorageItem.id%>">
                                 <input type="submit" value="Take Item">

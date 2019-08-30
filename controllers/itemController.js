@@ -10,7 +10,8 @@ class ItemController {
                 capacity: {
                     [Op.gt]: 0 
                 }
-            }
+            },
+            order: [["name", "ASC"]]
         })
         .then(storages => {
             res.render("item/register", { storages })
