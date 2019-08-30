@@ -2,60 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <%- include("../partials/bootstrap") %>
-    <title>User's Item</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <%- include("../partials/bootstrap") %>
+  <link rel="stylesheet" href="./style.css">
+  <title>User's Item</title>
 </head>
 
 <body>
-        <%- include('../partials/navbar') %>
+  <%- include('../partials/navbar') %>
 
-        <div class="container">
-        <div class="row pt-5">
-          <div class="col">
-            <div class="card-body">
-              <h2 class="card-title d-flex justify-content-center">Item List</h2>
-              <table class="table table-dark table-hover table-striped">
-                <thead class="thead-light">
-                  <tr>
-                    <th>Name</th>
-                    <th>Storage</th>
-                    <th>Actions</th>
-                   
-                  </tr>
-                </thead>
-                <tbody>
-    
+ 
+
+  <div class="container">
+    <div class="row pt-5">
+      <div class="col">
+        <div class="card-body">
+          <h2 class="card-title d-flex justify-content-center">Item List</h2>
+          
+          <table class="table table-fixed">
+              <thead>
+                <tr>
+                  <th class="col-xs-3">Item Name</th>
+                  <th class="col-xs-3">Location Store Item</th>
+                  <th class="col-xs-6"></th>
+                </tr>
+              </thead>
+              <tbody>
                   <% items.forEach(item => {%>
-                  <% const {name} = item %>
-                  <tr>
-                    <td><%= name %></td>
-                    <td><%= item.dataValues.StorageItem.dataValues.Storage.name %> </td>
-                    <td>
-                        <div class="btn btn-sm btn-info">
-                            <form action="/storageitem/delete" method="POST">
-                                <input type="hidden" name="storageItemId" value="<%=item.dataValues.StorageItem.id%>">
-                                <input type="submit" value="Take Item">
-                               
-                            </form>
+                    <% const {name} = item %>
+                    <tr>
+                      <td><%= name %></td>
+                      <td><%= item.dataValues.StorageItem.dataValues.Storage.name %> </td>
+                      <td>
+                        <div class="">
+                          <form action="/storageitem/delete" method="POST">
+                            <input type="hidden" name="storageItemId" value="<%=item.dataValues.StorageItem.id%>">
+                            <button class="btn btn-sm btn-info" type="submit">Take Item</button>          
+                          </form>
                         </div>
-                    </td>
-                  </tr>
-                  <% }) %>
-    
-                </tbody>
-              </table>
-              <div class="mx-auto">
-                  
-                  <a href="/item/add" class="btn btn-info">Add more Item</a>
-              </div>
-            </div>
+                      </td>
+                    </tr>
+                    <% }) %>
+          
+              </tbody>
+            </table>
+          <div class="mx-auto">
+
+            <a href="/item/add" class="btn btn-info">Add more Item</a>
           </div>
         </div>
       </div>
-    
+    </div>
+  </div>
+
 </body>
 
 </html>
